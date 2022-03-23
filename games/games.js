@@ -34,9 +34,7 @@ nameForm.addEventListener('submit', (e) => {
     // set the state to this data from the form, refer to html form input
     name1 = data.get('team-one');
     name2 = data.get('team-two');
-
-    nextGame.name1 = name1;
-    nextGame.name2 = name2;
+	
     // reset the form values
     nameForm.reset();
     displayCurrentGameEl();
@@ -78,13 +76,13 @@ finishGameButton.addEventListener('click', async() => {
     // after creating this new game, re-fetch the games to get the updated state and display them (hint: call displayAllGames())
     await createGame(newGame);
 	
-	await displayAllGames();
+    await displayAllGames();
 
     name1 = '',
     name2 = '',
     score1 = 0,
     score2 = 0,
-    };
+
     displayCurrentGameEl();
 });
 
@@ -97,9 +95,9 @@ logoutButton.addEventListener('click', () => {
  // on load . . .
 window.addEventListener('load', async() => {
     // display all past games (hint: call displayAllGames())
-        displayAllGames();
-    }
-});
+    displayAllGames();
+}
+);
 
 
 function displayCurrentGameEl() {
@@ -110,7 +108,7 @@ function displayCurrentGameEl() {
     // change the label to show team two's name;
     teamTwoLabel.textContent = name2;
     // call the render game function to create a game element
-	const newGame = {
+    const newGame = {
         name1: name1,
         name2: name2,
         score1: score1,
@@ -130,9 +128,9 @@ async function displayAllGames() {
     pastGamesEl.textContent = '';
     // FETCH ALL GAMES from supabase from fetch utils
     const fetchIt = await getGames();
-    for (let game of fetchIt) {
+    for (let i of fetchIt) {
         
-        const gameEl = renderGame(game);
+        const gameEl = renderGame(i);
         pastGamesEl.append(gameEl);
     }
     // loop through the past games 
