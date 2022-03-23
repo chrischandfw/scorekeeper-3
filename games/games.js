@@ -21,46 +21,48 @@ const teamTwoLabel = document.getElementById('team-two-name');
 
 checkAuth();
 
-let name1 = '';
-let name2 = '';
-let score1 = 0;
-let score2 = 0;
+let nextGame = {
+    name1: '',
+    name2: '',
+    score1: 0,
+    score2: 0
+};
 
 nameForm.addEventListener('submit', (e) => {
     // don't forget to prevent the default form behavior!
-
+    e.preventDefault();
     // get the name data from the form
 
     // set the state to this data from the form
 
     // reset the form values
 
-    displayCurrentGameEl()
+    displayCurrentGameEl();
 });
 
 
 teamOneAddButton.addEventListener('click', () => {
     // increment the current state for team one's score
-    
-    displayCurrentGameEl()
+    nextGame.score1++;
+    displayCurrentGameEl();
 });
 
 teamTwoAddButton.addEventListener('click', () => {
     // increment the current state for team two's score
-
-    displayCurrentGameEl()
+    nextGame.score2++;
+    displayCurrentGameEl();
 });
 
 teamOneSubtractButton.addEventListener('click', () => {
     // decrement the current state for team one's score
-
-    displayCurrentGameEl()
+    nextGame.score1--;
+    displayCurrentGameEl();
 });
 
 teamTwoSubtractButton.addEventListener('click', () => {
     // decrement the current state for team two's score
-
-    displayCurrentGameEl()
+    nextGame.score2--;
+    displayCurrentGameEl();
 });
 
 finishGameButton.addEventListener('click', async() => {
